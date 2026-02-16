@@ -21,16 +21,10 @@ export default function EducationPage() {
             <article key={item.degree} className="timeline-item">
               <p className="timeline-period">{item.period}</p>
               <div>
-                <h3 className="entry-title">{item.degree}</h3>
-                <p className="entry-desc">{item.school}</p>
-                <p className="entry-note">{item.summary}</p>
-                <ul className="education-highlights" aria-label={`${item.degree} highlights`}>
-                  {item.highlights.map((highlight) => (
-                    <li key={`${item.degree}-${highlight}`} className="education-highlight">
-                      {highlight}
-                    </li>
-                  ))}
-                </ul>
+                <h3 className="entry-title">{item.school}</h3>
+                <p className="entry-desc">{item.degree}</p>
+                <p className="entry-detail-label">Details</p>
+                <p className="entry-note">{item.details}</p>
               </div>
             </article>
           ))}

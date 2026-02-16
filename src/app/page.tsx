@@ -47,16 +47,10 @@ export default function Home() {
             <article key={item.degree} className="timeline-item">
               <p className="timeline-period">{item.period}</p>
               <div>
-                <h3 className="entry-title">{item.degree}</h3>
-                <p className="entry-desc">{item.school}</p>
-                <p className="entry-note">{item.summary}</p>
-                <ul className="education-highlights compact" aria-label={`${item.degree} highlights`}>
-                  {item.highlights.slice(0, 2).map((highlight) => (
-                    <li key={`${item.degree}-${highlight}`} className="education-highlight">
-                      {highlight}
-                    </li>
-                  ))}
-                </ul>
+                <h3 className="entry-title">{item.school}</h3>
+                <p className="entry-desc">{item.degree}</p>
+                <p className="entry-detail-label">Details</p>
+                <p className="entry-note">{item.details}</p>
               </div>
             </article>
           ))}
@@ -103,6 +97,8 @@ export default function Home() {
               <div>
                 <h3 className="entry-title">{item.title}</h3>
                 <p className="entry-desc">{item.description}</p>
+                <p className="entry-detail-label">Details</p>
+                <p className="entry-note">{item.details}</p>
               </div>
             </article>
           ))}

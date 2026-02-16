@@ -23,6 +23,8 @@ export default function ExperiencePage() {
               <div>
                 <h3 className="entry-title">{item.title}</h3>
                 <p className="entry-desc">{item.description}</p>
+                <p className="entry-detail-label">Details</p>
+                <p className="entry-note">{item.details}</p>
               </div>
             </article>
           ))}
