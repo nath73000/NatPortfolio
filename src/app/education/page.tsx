@@ -23,6 +23,14 @@ export default function EducationPage() {
               <div>
                 <h3 className="entry-title">{item.degree}</h3>
                 <p className="entry-desc">{item.school}</p>
+                <p className="entry-note">{item.summary}</p>
+                <ul className="education-highlights" aria-label={`${item.degree} highlights`}>
+                  {item.highlights.map((highlight) => (
+                    <li key={`${item.degree}-${highlight}`} className="education-highlight">
+                      {highlight}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </article>
           ))}
