@@ -22,35 +22,22 @@ export default function Home() {
     <div className="bg-black text-slate-100">
       <section className="relative isolate min-h-[78vh] overflow-hidden">
         <div
-          className="absolute inset-0 orbit-background will-change-transform"
+          className="absolute inset-0 hero-space will-change-transform"
           style={{
             transform: `translateY(${parallaxOffset}px) scale(${scale})`,
           }}
         >
-          <div className="orbit-scene" aria-hidden="true">
-            <span className="orbit-shell orbit-shell-one">
-              <span className="orbit-path orbit-cyan orbit-spin-slow">
-                <span className="orbit-dot orbit-cyan" />
-              </span>
-            </span>
-            <span className="orbit-shell orbit-shell-two">
-              <span className="orbit-path orbit-emerald orbit-spin-reverse">
-                <span className="orbit-dot orbit-emerald" />
-              </span>
-            </span>
-            <span className="orbit-shell orbit-shell-three">
-              <span className="orbit-path orbit-violet orbit-spin-fast">
-                <span className="orbit-dot orbit-violet" />
-              </span>
-            </span>
-            <span className="orbit-shell orbit-shell-four">
-              <span className="orbit-path orbit-amber orbit-spin-reverse-fast">
-                <span className="orbit-dot orbit-amber" />
-              </span>
-            </span>
+          <div className="satellite-sky" aria-hidden="true">
+            <span className="satellite-fly sat-a" />
+            <span className="satellite-fly sat-b" />
+            <span className="satellite-fly sat-c" />
+            <span className="satellite-fly sat-d" />
+            <span className="satellite-fly sat-e" />
+            <span className="satellite-fly sat-f" />
           </div>
+          <div className="earth-shadow" aria-hidden="true" />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/62 to-black/82" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/24 via-black/48 to-black/62" />
 
         <div className="relative mx-auto max-w-5xl px-4 pt-32 pb-20 text-white">
           <p className="text-sm uppercase tracking-[0.22em] text-slate-300">
