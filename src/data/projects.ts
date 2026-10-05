@@ -1,9 +1,3 @@
-export type ProjectResult = {
-  label: string;
-  value: string;
-  detail: string;
-};
-
 export type Project = {
   slug: string;
   title: string;
@@ -14,8 +8,8 @@ export type Project = {
   problem: string;
   approach: string;
   stack: string[];
-  results: ProjectResult[];
   outcomes: string[];
+  reportUrl?: string;
 };
 
 export const projects: Project[] = [
@@ -33,26 +27,6 @@ export const projects: Project[] = [
     approach:
       "I implemented a PPO policy with constrained action scaling, curriculum learning, and recurrent state features to improve robustness across mission phases.",
     stack: ["Python", "PyTorch", "Gymnasium", "NumPy", "Weights & Biases"],
-    results: [
-      {
-        label: "Settling Time",
-        value: "-28%",
-        detail:
-          "Average stabilization time improved against the tuned PID baseline across 200 test episodes.",
-      },
-      {
-        label: "Pointing Error",
-        value: "0.42 deg",
-        detail:
-          "Mean absolute pointing error at steady state under nominal and noisy sensor conditions.",
-      },
-      {
-        label: "Policy Stability",
-        value: "94%",
-        detail:
-          "Episodes completed without saturation-induced failure under randomized disturbance profiles.",
-      },
-    ],
     outcomes: [
       "Delivered a reusable RL control benchmark with deterministic evaluation scripts.",
       "Documented hyperparameter sensitivities and failure regions for mission engineering review.",
@@ -60,124 +34,26 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "offline-rl-trajectory-optimization",
-    title: "Offline RL for Trajectory Optimization",
-    date: "2025-06-20",
-    tags: ["RL", "Offline RL", "Space"],
+    slug: "differential-equation-solvers-n-body-image-diffusion",
+    title: "Differential Equation Solvers: N-Body Orbits & Image Diffusion",
+    date: "2023-04-28",
+    tags: ["Numerical Methods", "Simulation", "Space", "Image Processing"],
     description:
-      "Built an offline RL pipeline from simulated datasets and compared performance against classical control methods.",
+      "Implemented Verlet and Runge-Kutta 4 integrators in Python to simulate Solar System orbits, then reused RK4 with finite differences to run heat and anisotropic diffusion on images.",
     context:
-      "Trajectory optimization was performed from a fixed historical dataset generated with mixed-quality expert and heuristic policies.",
+      "Numerical analysis study project (Ma322) carried out in a team of three during my third year at IPSA, covering the numerical resolution of differential equations through two applications: planetary motion and 2D diffusion.",
     problem:
-      "Online exploration was costly in simulation time and unsafe in edge trajectories, making offline learning mandatory.",
+      "Explicit Euler does not conserve the total energy of a mechanical system, which rules it out for long orbital simulations, and diffusion equations with Neumann boundary conditions have to be discretized in space before a time integrator can be applied to an image.",
     approach:
-      "I developed an offline RL training stack with conservative value regularization, dataset curation, and policy validation against held-out trajectory clusters.",
-    stack: ["Python", "PyTorch", "D4RL", "Pandas", "Matplotlib"],
-    results: [
-      {
-        label: "Fuel Usage",
-        value: "-14%",
-        detail:
-          "Average propellant consumption reduced relative to behavior-cloned trajectory baselines.",
-      },
-      {
-        label: "Constraint Violations",
-        value: "-37%",
-        detail:
-          "Violations on dynamic envelope constraints dropped in offline policy rollout tests.",
-      },
-      {
-        label: "Dataset Efficiency",
-        value: "1.8x",
-        detail:
-          "Achieved target return with significantly fewer high-quality expert samples.",
-      },
-    ],
+      "We proved that the explicit Euler scheme gains energy at every step, derived the Verlet scheme and its second-order initialization from Taylor expansions, then implemented Verlet and RK4 for the Sun-Earth-Mars problem and for an 8-body Solar System initialized from IMCCE ephemerides, comparing trajectories and kinetic, potential, and total energies. For diffusion, we discretized the 2D heat equation with centered finite differences in matrix form, integrated it with RK4 on each color channel, and extended the solver to gradient-norm and Laplacian-norm variants and to anisotropic diffusion with a gradient-dependent coefficient.",
+    stack: ["Python", "NumPy", "Matplotlib", "OpenCV", "LaTeX"],
     outcomes: [
-      "Built reproducible offline training jobs with dataset versioning and validation reports.",
-      "Identified data quality thresholds where conservative methods outperform BC baselines.",
-      "Produced policy scorecards for engineering handoff and ablation tracking.",
+      "Showed analytically that explicit Euler gains energy at every step, and numerically that Verlet and RK4 stay in close agreement on the Sun-Earth-Mars system over 15,000 steps.",
+      "On the 8-body Solar System over 25,000 steps, the two integrators' trajectories and total energies drift apart, showing how sensitive long-horizon orbital simulation is to the choice of scheme.",
+      "Obtained image blurring, contour accentuation, and anisotropic smoothing from the same RK4 scheme by changing only the right-hand side of the diffusion equation.",
+      "Documented the derivations, Python code, and experiments in a 40-page report (in French).",
     ],
-  },
-  {
-    slug: "telemetry-anomaly-detection",
-    title: "Telemetry Anomaly Detection",
-    date: "2024-11-03",
-    tags: ["ML", "Space", "Data"],
-    description:
-      "Developed an early-warning anomaly detection module on telemetry streams with alert visualization.",
-    context:
-      "Mission telemetry channels were monitored in near real time to detect drifts before operational incidents occurred.",
-    problem:
-      "Rule-based thresholds generated too many false positives and missed multi-signal weak anomalies.",
-    approach:
-      "I trained a hybrid pipeline combining reconstruction-based anomaly scoring with temporal feature engineering and alert ranking.",
-    stack: ["Python", "Scikit-learn", "FastAPI", "PostgreSQL", "Plotly"],
-    results: [
-      {
-        label: "Detection Lead Time",
-        value: "+2.1 h",
-        detail:
-          "Anomalies were detected earlier than legacy threshold alerts on average.",
-      },
-      {
-        label: "False Positives",
-        value: "-41%",
-        detail:
-          "Daily operator-facing false alarms were reduced while preserving high recall.",
-      },
-      {
-        label: "AUC",
-        value: "0.93",
-        detail:
-          "Validation AUC on labeled historical events with temporal cross-validation.",
-      },
-    ],
-    outcomes: [
-      "Shipped alert explanations with contributing signal traces for faster triage.",
-      "Introduced severity buckets to prioritize intervention workflows.",
-      "Reduced monitoring fatigue for mission operations teams.",
-    ],
-  },
-  {
-    slug: "mission-simulation-dashboard",
-    title: "Mission Simulation Dashboard",
-    date: "2024-03-12",
-    tags: ["Web", "Data", "Simulation"],
-    description:
-      "Created an interactive dashboard to monitor mission simulation performance and generate automated reports.",
-    context:
-      "Simulation teams needed a shared interface to inspect scenario runs, compare KPIs, and export summary reports.",
-    problem:
-      "Run results were scattered across notebooks and logs, slowing cross-team decision making.",
-    approach:
-      "I designed a web dashboard with synchronized charts, filterable run metadata, and scheduled report generation.",
-    stack: ["Next.js", "TypeScript", "Node.js", "PostgreSQL", "Chart.js"],
-    results: [
-      {
-        label: "Analysis Time",
-        value: "-52%",
-        detail:
-          "Average time to review a full simulation batch dropped from hours to minutes.",
-      },
-      {
-        label: "Report Throughput",
-        value: "3.4x",
-        detail:
-          "Automated report pipelines increased weekly reporting output with fewer manual steps.",
-      },
-      {
-        label: "Adoption",
-        value: "26 users",
-        detail:
-          "Cross-functional engineering and research users actively used the dashboard each week.",
-      },
-    ],
-    outcomes: [
-      "Standardized KPI definitions across simulation, controls, and mission analysis groups.",
-      "Enabled run-to-run comparison in one interface for faster iteration loops.",
-      "Set up exportable artifacts for program review meetings.",
-    ],
+    reportUrl: "/reports/ma322-differential-equations-report.pdf",
   },
 ];
 

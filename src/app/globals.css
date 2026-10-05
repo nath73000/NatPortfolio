@@ -393,23 +393,6 @@ a {
   color: var(--color-muted);
 }
 
-.results-grid {
-  display: grid;
-  gap: 1rem;
-}
-
-.result-card {
-  min-height: 160px;
-}
-
-.result-value {
-  margin: 0.3rem 0 0;
-  font-size: clamp(1.35rem, 3.3vw, 2.1rem);
-  line-height: 1.1;
-  font-weight: 800;
-  letter-spacing: -0.01em;
-}
-
 .detail-list {
   display: grid;
   gap: 0.55rem;
@@ -433,10 +416,6 @@ a {
 
   .project-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .results-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .timeline-item {

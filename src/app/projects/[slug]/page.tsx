@@ -42,6 +42,18 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
             ))}
           </div>
         </div>
+        {project.reportUrl ? (
+          <div className="inline-links">
+            <a
+              href={project.reportUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-link"
+            >
+              Read the Report (PDF)
+            </a>
+          </div>
+        ) : null}
       </header>
 
       <section className="split-section section-line">
@@ -52,21 +64,6 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
           <p>{project.context}</p>
           <p>{project.problem}</p>
           <p>{project.approach}</p>
-        </div>
-      </section>
-
-      <section className="split-section section-line">
-        <aside className="section-label">
-          <h2>Results</h2>
-        </aside>
-        <div className="split-content results-grid">
-          {project.results.map((result) => (
-            <article key={`${project.slug}-${result.label}`} className="panel result-card">
-              <p className="entry-meta">{result.label}</p>
-              <p className="result-value">{result.value}</p>
-              <p className="entry-desc">{result.detail}</p>
-            </article>
-          ))}
         </div>
       </section>
 
