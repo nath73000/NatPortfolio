@@ -55,6 +55,28 @@ export const projects: Project[] = [
     ],
     reportUrl: "/reports/ma322-differential-equations-report.pdf",
   },
+  {
+    slug: "image-restoration-matrix-conjugate-gradient",
+    title: "Image Restoration with Matrix Conjugate Gradient",
+    date: "2023-03-26",
+    tags: ["Optimization", "Numerical Methods", "Image Processing"],
+    description:
+      "Restored damaged photographs in Python by casting the reconstruction of missing pixels as a quadratic minimization problem, derived from the Euler-Lagrange equations and solved with a matrix-form conjugate gradient algorithm.",
+    context:
+      "Differentiable optimization study project (Ma321) carried out in a team of three during my third year at IPSA, on restoring images whose pixels are damaged or missing.",
+    problem:
+      "Old or corrupted photographs contain scratches and missing pixels, and the damaged regions have to be rebuilt from the surrounding intact pixels while leaving those intact pixels unchanged.",
+    approach:
+      "We derived the Euler-Lagrange equation for a two-variable functional and showed that, for the squared gradient norm, the restored image satisfies Laplace's equation with the intact pixels as boundary condition. After discretizing the Laplacian with centered finite differences, we rewrote the problem as a quadratic form in matrix variables with a mask restricting updates to the damaged pixels, proved that the associated operator is linear and symmetric for the trace inner product, computed the gradient of the quadratic form, and adapted the conjugate gradient algorithm to matrices. The solver was implemented with NumPy and OpenCV, applied channel by channel to color images, and its iterations were exported as a video.",
+    stack: ["Python", "NumPy", "OpenCV", "LaTeX"],
+    outcomes: [
+      "Restored a scratched vintage portrait in color and grayscale, and recovered recognizable pictures from test images in which a large number of pixels had been blacked out, typically in 300 to 500 conjugate gradient iterations.",
+      "Identified clusters of blue or white pixels that persisted after many iterations, and reduced them with a dedicated mask for color images.",
+      "Ran the solver for up to 5,000 iterations on three primary-color discs and observed the colors spreading like waves and mixing additively.",
+      "Documented the derivations, Python code, and restoration results in a 20-page report (in French).",
+    ],
+    reportUrl: "/reports/ma321-image-restoration-report.pdf",
+  },
 ];
 
 export const getProjectBySlug = (slug: string) =>
