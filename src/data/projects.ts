@@ -34,6 +34,29 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: "newton-fractals-kernel-svm-uzawa",
+    title: "Newton Fractals & Kernel SVM with Uzawa's Algorithm",
+    date: "2023-05-11",
+    tags: ["Optimization", "Machine Learning", "Numerical Methods"],
+    description:
+      "Generated Newton fractals with a vectorized solver over the complex plane, then implemented Uzawa's algorithm from scratch to train linear and kernel support vector machines on MNIST handwritten digits.",
+    context:
+      "Differentiable optimization study project (Ma324) carried out in a team of four during my third year at IPSA, in two parts: drawing fractals with Newton's method and classifying handwritten digits with kernel support vector machines.",
+    problem:
+      "The root that Newton's method converges to depends on the starting point, and mapping that dependence means running the iteration on millions of points of the complex plane. On the learning side, training a support vector machine requires solving a constrained quadratic minimization problem.",
+    approach:
+      "We derived the Newton iteration for a parametrized cubic polynomial and applied it to a matrix representing the complex plane, coloring each pixel by the root it ends up closest to and marking the points that do not converge, then extended the renderer to a degree-6 polynomial and to the Mandelbrot iteration z² + c, with zoom sequences exported as GIFs. For classification, we rewrote the SVM constraints with a kernel function and its Gram matrix, wrote Uzawa's algorithm with projection for the soft-margin problem, and implemented it in NumPy with polynomial and Gaussian kernels, training one detector per digit and combining them into a multi-class predictor tested on MNIST and Fashion-MNIST.",
+    stack: ["Python", "NumPy", "Matplotlib", "imageio", "LaTeX"],
+    outcomes: [
+      "Rendered Newton fractals on grids of several million points, including a parameter value where a non-convergence region shaped like the Douady rabbit appears.",
+      "Replaced a pixel-by-pixel double loop with matrix operations over the whole complex plane, which greatly reduced rendering time.",
+      "Trained one-vs-rest digit detectors on 1,000 MNIST samples and evaluated them on the 10,000-image test set with confusion matrices, sensitivity, and error rate.",
+      "Found the classifiers highly dependent on the margin bound and kernel settings: the linear detectors traded sensitivity against false positives, while the kernel versions ended up predicting a single class with the settings and training size we could afford.",
+      "Documented the derivations, Python code, and experiments in a 27-page report (in French).",
+    ],
+    reportUrl: "/reports/ma324-newton-fractals-kernel-svm-report.pdf",
+  },
+  {
     slug: "differential-equation-solvers-n-body-image-diffusion",
     title: "Differential Equation Solvers: N-Body Orbits & Image Diffusion",
     date: "2023-04-28",
