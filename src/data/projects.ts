@@ -10,9 +10,33 @@ export type Project = {
   stack: string[];
   outcomes: string[];
   reportUrl?: string;
+  repoUrl?: string;
 };
 
 export const projects: Project[] = [
+  {
+    slug: "dreamer-v1-reproduction",
+    title: "Dreamer V1 Reproduction: World Model RL from Pixels",
+    date: "2026-05-02",
+    tags: ["RL", "World Models", "Deep Learning"],
+    description:
+      "Reimplemented Dreamer V1 in PyTorch, a model-based RL agent that learns a latent world model from images and trains its actor and critic on imagined trajectories, and reproduced its learning on cartpole swing-up.",
+    context:
+      "Final project for the COMP 579 reinforcement learning course at McGill University, carried out on my own: a reproduction of Dreamer V1 (Hafner et al., 2020), an agent that learns behaviors by latent imagination.",
+    problem:
+      "Model-free algorithms such as PPO and SAC often need millions of environment interactions, which is prohibitive when data collection is costly or risky. Dreamer instead learns a world model and optimizes its policy inside it, and the goal was to rebuild its main components and check experimentally that behaviors learned in imagination transfer to the real environment.",
+    approach:
+      "I implemented the Recurrent State-Space Model as seven jointly trained modules: a CNN encoder, a GRU recurrent model, an MLP prior and posterior over a Gaussian stochastic state, a transposed-CNN decoder, a reward model, and a continue model (disabled for this task). The world model is trained on sequences drawn from a replay buffer with reconstruction, reward, and KL losses with free nats. An actor and a critic are then trained on trajectories imagined in latent space, using λ-returns and analytic gradients backpropagated through the learned dynamics. The agent was trained for 145,000 gradient steps on cartpole-swingup from the DeepMind Control Suite, with 64×64 RGB observations.",
+    stack: ["Python", "PyTorch", "DeepMind Control Suite", "NumPy", "Plotly", "LaTeX"],
+    outcomes: [
+      "Reached an average score of about 550 on cartpole-swingup, with the best model swinging the pole up and keeping it nearly vertical for almost the whole episode; the original paper reports roughly 700 on the same task.",
+      "Verified that the reward predicted in imagination closely tracks the reward actually obtained throughout training, evidence that the policy optimized in latent space transfers to the real environment.",
+      "Diagnosed a stalled run: with a free nats threshold of 3.0 the KL regularizer was inactive, and lowering it to 1.0 around 90,000 gradient steps triggered a second phase of improvement from a plateau near 200.",
+      "Documented the architecture, hyperparameters, and training diagnostics in a 12-page report, with the code available on GitHub.",
+    ],
+    reportUrl: "/reports/comp579-dreamer-v1-reproduction-report.pdf",
+    repoUrl: "https://github.com/nath73000/Dreamer_v1_ByNath",
+  },
   {
     slug: "ppo-satellite-attitude-control",
     title: "PPO for Satellite Attitude Control",

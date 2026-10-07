@@ -42,16 +42,28 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
             ))}
           </div>
         </div>
-        {project.reportUrl ? (
+        {project.reportUrl || project.repoUrl ? (
           <div className="inline-links">
-            <a
-              href={project.reportUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-link"
-            >
-              Read the Report (PDF)
-            </a>
+            {project.reportUrl ? (
+              <a
+                href={project.reportUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-link"
+              >
+                Read the Report (PDF)
+              </a>
+            ) : null}
+            {project.repoUrl ? (
+              <a
+                href={project.repoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-link"
+              >
+                View the Code (GitHub)
+              </a>
+            ) : null}
           </div>
         ) : null}
       </header>
