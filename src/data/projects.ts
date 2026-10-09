@@ -38,26 +38,6 @@ export const projects: Project[] = [
     repoUrl: "https://github.com/nath73000/Dreamer_v1_ByNath",
   },
   {
-    slug: "ppo-satellite-attitude-control",
-    title: "PPO for Satellite Attitude Control",
-    date: "2026-01-10",
-    tags: ["RL", "Space", "PPO"],
-    description:
-      "Designed a robust PPO agent with reward shaping, multi-seed training, and evaluation on diverse orbital scenarios.",
-    context:
-      "The project focused on autonomous satellite attitude stabilization in a simulated orbital environment with actuator constraints.",
-    problem:
-      "Classical controllers were stable in nominal conditions but degraded under disturbances, sensor noise, and changing inertia parameters.",
-    approach:
-      "I implemented a PPO policy with constrained action scaling, curriculum learning, and recurrent state features to improve robustness across mission phases.",
-    stack: ["Python", "PyTorch", "Gymnasium", "NumPy", "Weights & Biases"],
-    outcomes: [
-      "Delivered a reusable RL control benchmark with deterministic evaluation scripts.",
-      "Documented hyperparameter sensitivities and failure regions for mission engineering review.",
-      "Prepared experiment artifacts for direct comparison with model-based controllers.",
-    ],
-  },
-  {
     slug: "newton-fractals-kernel-svm-uzawa",
     title: "Newton Fractals & Kernel SVM with Uzawa's Algorithm",
     date: "2023-05-11",
