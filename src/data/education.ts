@@ -8,30 +8,32 @@ export type Education = {
 export const educationItems: Education[] = [
   {
     period: "2024 - 2026",
-    degree: "Thesis based master - computer science and aerospace",
+    degree:
+      "Thesis-Based Master of Applied Science (MASc) in Electrical and Computer Engineering",
     school: "Concordia University",
     details:
-      "Advanced curriculum focused on reinforcement learning, autonomous systems, and space mission operations. Built and evaluated RL control pipelines for satellite attitude and trajectory optimization, designed reproducible simulation experiments with benchmark scenarios and multi-seed validation, and completed an applied thesis on RL methods for in-orbit operations and mission automation.",
+      "Research master's degree with a thesis on deep reinforcement learning for scheduling on-orbit servicing missions. The scheduling problem is formulated as an event-driven semi-Markov decision process, and a Maskable PPO agent is trained to maximize the net present value of the servicing system for high-thrust and low-thrust servicers, then benchmarked against a greedy heuristic. Coursework in evolutionary algorithms and machine learning, with a reinforcement learning course taken at McGill University.",
   },
   {
     period: "sep 2023 - feb 2024",
     degree: "Exchange Semester",
     school: "National Taipei University of Technology (NTUT)",
     details:
-      "Core engineering training in software development, data science, machine learning, and scientific computing. Developed full-stack projects and data products with production-style architecture and version control workflows, implemented statistical learning and model evaluation pipelines on real-world datasets, and reinforced foundations in algorithms, linear algebra, probability, and system-level programming.",
+      "Exchange semester combining space systems engineering with computer science and AI. Studied space mission and system design, applied deep learning and computer vision, data storage systems, and advanced programming in C.",
   },
   {
     period: "sep 2022 - now",
-    degree: "Aerospace engineering Degree",
-    school: "IPSA toulouse / Paris",
+    degree: "Aerospace Engineering Degree (Diplôme d'Ingénieur)",
+    school: "IPSA Toulouse / Paris",
     details:
-      "Preparatory aerospace program emphasizing mathematics, physics, mechanics, and engineering methodology. Applied structured engineering problem-solving methods to aerospace and dynamic systems, completed practical lab sessions in mechanics, electronics, and scientific instrumentation, and built analytical rigor for later specialization in autonomous and AI-driven systems.",
+      "Engineering degree in aerospace with a specialization in space systems, complemented by a focus on computer science and embedded systems.",
   },
   {
     period: "sep 2020 - jul 2022",
-    degree: "Integrated Preparatory Cycle",
+    degree:
+      "Intensive Preparatory Program in Mathematics & Physics (Classes Préparatoires)",
     school: "IPSA Toulouse",
     details:
-      "Preparatory aerospace program emphasizing mathematics, physics, mechanics, and engineering methodology. Applied structured engineering problem-solving methods to aerospace and dynamic systems, completed practical lab sessions in mechanics, electronics, and scientific instrumentation, and built analytical rigor for later specialization in autonomous and AI-driven systems.",
+      "Two-year intensive program preparing for French engineering schools (grandes écoles d'ingénieurs). Built a strong foundation in advanced calculus, mechanics, and physics, along with rigor in analytical reasoning and scientific writing.",
   },
 ];
