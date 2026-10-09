@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 export const metadata: Metadata = {
   title: "Nathan Claret | Portfolio",
   description:
-    "Personal portfolio with home, experience, education, and projects sorted by date.",
+    "Personal portfolio with home, experience, education, publications, and projects sorted by date.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

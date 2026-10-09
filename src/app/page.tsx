@@ -1,7 +1,9 @@
 import Link from "next/link";
+import PublicationList from "@/components/PublicationList";
 import { educationItems } from "@/data/education";
 import { experiences } from "@/data/experience";
 import { projects } from "@/data/projects";
+import { publications } from "@/data/publications";
 
 const featuredProjects = [...projects]
   .sort(
@@ -57,6 +59,20 @@ export default function Home() {
           <div className="detail-actions">
             <Link href="/education" className="text-link">
               View Education Page
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="split-section section-line">
+        <aside className="section-label">
+          <h2>Publications</h2>
+        </aside>
+        <div className="split-content timeline-list">
+          <PublicationList items={publications} showSummary={false} />
+          <div className="detail-actions">
+            <Link href="/publications" className="text-link">
+              View Publications Page
             </Link>
           </div>
         </div>

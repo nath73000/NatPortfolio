@@ -368,6 +368,10 @@ a {
   border-bottom: 1px solid var(--color-border);
 }
 
+.publication-links {
+  margin-top: 0.85rem;
+}
+
 .timeline-period {
   margin: 0;
   color: var(--color-muted);
