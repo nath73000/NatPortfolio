@@ -26,6 +26,15 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
     notFound();
   }
 
+  const hasOutcomes = project.outcomes.length > 0;
+  const backLink = (
+    <div className="detail-actions">
+      <Link href="/projects" className="text-link">
+        Back to Projects
+      </Link>
+    </div>
+  );
+
   return (
     <div className="page-stack">
       <header className="page-heading section-line">
@@ -33,7 +42,10 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
         <h1>{project.title}</h1>
         <p className="text-muted">{project.description}</p>
         <div className="detail-meta-line">
-          <span className="entry-meta">{formatDate(project.date)}</span>
+          <span className="entry-meta">
+            {formatDate(project.date)}
+            {project.inProgress ? " · In progress" : null}
+          </span>
           <div className="project-tags">
             {project.tags.map((tag) => (
               <span key={`${project.slug}-${tag}`} className="tag">
@@ -74,12 +86,14 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
         </aside>
         <div className="split-content detail-copy">
           <p>{project.context}</p>
-          <p>{project.problem}</p>
-          <p>{project.approach}</p>
+          {project.problem ? <p>{project.problem}</p> : null}
+          {project.approach ? <p>{project.approach}</p> : null}
         </div>
       </section>
 
-      <section className="split-section section-line">
+      <section
+        className={hasOutcomes ? "split-section section-line" : "split-section"}
+      >
         <aside className="section-label">
           <h2>Stack</h2>
         </aside>
@@ -91,26 +105,25 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
               </span>
             ))}
           </div>
+          {hasOutcomes ? null : backLink}
         </div>
       </section>
 
-      <section className="split-section">
-        <aside className="section-label">
-          <h2>Outcomes</h2>
-        </aside>
-        <div className="split-content detail-list">
-          {project.outcomes.map((outcome) => (
-            <p key={`${project.slug}-${outcome}`} className="detail-list-item">
-              {outcome}
-            </p>
-          ))}
-          <div className="detail-actions">
-            <Link href="/projects" className="text-link">
-              Back to Projects
-            </Link>
+      {hasOutcomes ? (
+        <section className="split-section">
+          <aside className="section-label">
+            <h2>Outcomes</h2>
+          </aside>
+          <div className="split-content detail-list">
+            {project.outcomes.map((outcome) => (
+              <p key={`${project.slug}-${outcome}`} className="detail-list-item">
+                {outcome}
+              </p>
+            ))}
+            {backLink}
           </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
     </div>
   );
 }

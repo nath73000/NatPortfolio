@@ -89,7 +89,10 @@ export default function Home() {
               href={`/projects/${project.slug}`}
               className="panel project-panel project-link"
             >
-              <p className="entry-meta">{formatDate(project.date)}</p>
+              <p className="entry-meta">
+                {formatDate(project.date)}
+                {project.inProgress ? " · In progress" : null}
+              </p>
               <h3 className="entry-title">{project.title}</h3>
               <p className="entry-desc">{project.description}</p>
             </Link>

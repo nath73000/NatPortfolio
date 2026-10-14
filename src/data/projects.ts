@@ -5,15 +5,30 @@ export type Project = {
   tags: string[];
   description: string;
   context: string;
-  problem: string;
-  approach: string;
+  problem?: string;
+  approach?: string;
   stack: string[];
   outcomes: string[];
   reportUrl?: string;
   repoUrl?: string;
+  inProgress?: boolean;
 };
 
 export const projects: Project[] = [
+  {
+    slug: "ijepa-implementation",
+    title: "I-JEPA Implementation: Self-Supervised Learning from Images",
+    date: "2026-10-14",
+    inProgress: true,
+    tags: ["Self-Supervised Learning", "Computer Vision", "Deep Learning"],
+    description:
+      "Implementing I-JEPA in PyTorch, a self-supervised method that learns image representations by predicting the latent representations of masked image regions.",
+    context:
+      "Ongoing implementation of I-JEPA (Assran et al., 2023), a self-supervised method in which a Vision Transformer learns image representations by predicting the latent representations of masked image regions. The first version is trained on CIFAR-10.",
+    stack: ["Python", "PyTorch", "torchvision", "Jupyter"],
+    outcomes: [],
+    repoUrl: "https://github.com/nath73000/IJEPA",
+  },
   {
     slug: "dreamer-v1-reproduction",
     title: "Dreamer V1 Reproduction: World Model RL from Pixels",
