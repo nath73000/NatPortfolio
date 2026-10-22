@@ -32,9 +32,9 @@ export default function Home() {
           <p className="home-bottom-title">Master thesis student</p>
           <div className="home-bottom-copy">
             <p>
-              I am a dual-degree student in Computer Science at Concordia University (Montreal, Canada) and
-              Aerospace Engineering at ISPA (Paris, France). I am currently working on a thesis focused on applying
-              reinforcement learning to in-orbit operations.
+              Dual-degree graduate with a strong focus on Computer Science and Artificial Intelligence. I completed a thesis-based MASc 
+              at Concordia University (Montreal, Canada) with research concentrated on deep reinforcement learning, sequential decision-making, 
+              and simulation environments, coupled with an Aerospace Engineering Degree from IPSA (France).
             </p>
           </div>
         </div>
